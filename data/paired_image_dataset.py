@@ -1,6 +1,6 @@
 from torch.utils import data as data
 from torchvision.transforms.functional import normalize
-
+import cv2
 from basicsr.data.data_util import paired_paths_from_folder, paired_paths_from_lmdb, paired_paths_from_meta_info_file
 from basicsr.data.transforms import augment, paired_random_crop
 from basicsr.utils import FileClient, bgr2ycbcr, imfrombytes, img2tensor
@@ -72,6 +72,10 @@ class PairedImageDataset(data.Dataset):
         lq_path = self.paths[index]['lq_path']
         img_bytes = self.file_client.get(lq_path, 'lq')
         img_lq = imfrombytes(img_bytes, float32=True)
+        
+        # Resize images to 512x512
+        img_gt = cv2.resize(img_gt, (512, 512), interpolation=cv2.INTER_LINEAR)
+        img_lq = cv2.resize(img_lq, (512, 512), interpolation=cv2.INTER_LINEAR)
 
         # augmentation for training
         if self.opt['phase'] == 'train':
@@ -97,6 +101,7 @@ class PairedImageDataset(data.Dataset):
         if self.mean is not None or self.std is not None:
             normalize(img_lq, self.mean, self.std, inplace=True)
             normalize(img_gt, self.mean, self.std, inplace=True)
+
 
         return {'lq': img_lq, 'gt': img_gt, 'lq_path': lq_path, 'gt_path': gt_path}
 

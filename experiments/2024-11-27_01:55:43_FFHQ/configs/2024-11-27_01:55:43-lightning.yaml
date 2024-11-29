@@ -1,0 +1,36 @@
+use_tb: true
+modelcheckpoint:
+  verbose: true
+  every_n_train_steps: 20
+  save_last: true
+  save_weights_only: false
+use_image_logger: true
+image_logger:
+  batch_frequency: 5000
+  max_images: 4
+  clamp: true
+use_val: true
+val:
+  val_freq: 50
+  save_img: true
+  metrics:
+    psnr_ssim: true
+    lpips: true
+    niqe: true
+    fid: false
+  dataset:
+    num_workers: 10
+    batch_size: 16
+    target: data.paired_image_dataset.PairedImageDataset
+    params:
+      phase: test
+      dataroot_gt: /home/user1/kasra/pycharm-projects/BFRffusion/assets/validation/hq1
+      dataroot_lq: /home/user1/kasra/pycharm-projects/BFRffusion/assets/validation/lq1
+      io_backend:
+        type: disk
+      scale: 1
+trainer:
+  benchmark: true
+  max_steps: 1000
+  gpus: 1
+  accelerator: ddp

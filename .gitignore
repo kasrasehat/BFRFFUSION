@@ -1,0 +1,58 @@
+# Ignore Mac system files
+.DS_Store
+
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+
+# Ignore virtual environment directories
+env/
+venv/
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore log files
+*.log
+
+# Ignore temporary files
+*.tmp
+*.swp
+
+# Ignore compiled files
+*.class
+*.o
+*.so
+
+# Ignore build directories
+build/
+dist/
+
+# Ignore coverage reports
+htmlcov/
+.coverage
+
+# Ignore personal config files
+*.env
+
+# Ignore image files
+*.png
+*.JPG
+*.jpg
+*.csv
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+
+# Ignore model checkpoint files
+*.ckpt
+*.pth
+
+# Ignore other large or unnecessary files
+*.h5
+*.pb
+*.onnx
+
+# Ignore TensorBoard event files
+experiments/*/tensorboard/
