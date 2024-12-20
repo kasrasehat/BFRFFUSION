@@ -99,7 +99,7 @@ class PairedImageDataset(data.Dataset):
         img_gt, img_lq = img2tensor([img_gt, img_lq], bgr2rgb=True, float32=True)
         # normalize
         if self.mean is not None or self.std is not None:
-            normalize(img_lq, self.mean, self.std, inplace=True)
+            # normalize(img_lq, self.mean, self.std, inplace=True)
             normalize(img_gt, self.mean, self.std, inplace=True)
 
 

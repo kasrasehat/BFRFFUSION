@@ -25,7 +25,7 @@ def split_dataset(source_dir, train_dir, val_dir, test_dir, train_ratio=0.8, val
     random.shuffle(all_files)
 
     # Step 3: Calculate the number of files for each set
-    train_count = int(total_files * train_ratio)
+    train_count = int(((total_files * train_ratio)//32)*32)
     val_count = int(((total_files * val_ratio)//32)*32)
     test_count = total_files - train_count - val_count  # To ensure all files are used
 
@@ -60,9 +60,9 @@ if __name__ == "__main__":
     test_directory = "/home/user1/kasra/pycharm-projects/BFRffusion/assets/test/hq"
 
     # Set the desired proportions
-    train_ratio = 0.8
-    val_ratio = 0.1
-    test_ratio = 0.1
+    train_ratio = 0.96
+    val_ratio = 0.02
+    test_ratio = 0.02
 
     split_dataset(source_directory, train_directory, validation_directory, test_directory,
                   train_ratio=train_ratio, val_ratio=val_ratio, test_ratio=test_ratio)

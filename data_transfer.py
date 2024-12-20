@@ -44,6 +44,6 @@ def copy_random_files(source_dir, dest_dir, num_files, preserve_structure=False)
 if __name__ == "__main__":
     source_directory = "/mnt/drive/datasets/datasets/DF2K/DF2K_HR/"
     destination_directory = "/home/user1/kasra/pycharm-projects/BFRffusion/assets/balance_all_data/"
-    number_of_files_to_copy = 10000
+    number_of_files_to_copy = 4000
 
     copy_random_files(source_directory, destination_directory, number_of_files_to_copy, preserve_structure=False)

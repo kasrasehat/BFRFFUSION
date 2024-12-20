@@ -99,9 +99,9 @@ class CustomPairedImageDataset(data.Dataset):
         img_lq = torch.clamp((img_lq * 255.0).round(), 0, 255) / 255.
         
         # Normalize
-        # if self.mean is not None or self.std is not None:
-        #     # normalize(img_lq, self.mean, self.std, inplace=True)
-        #     normalize(img_gt, self.mean, self.std, inplace=True)
+        if self.mean is not None or self.std is not None:
+            # normalize(img_lq, self.mean, self.std, inplace=True)
+            normalize(img_gt, self.mean, self.std, inplace=True)
             
 
         return {'lq': img_lq, 'gt': img_gt, 'lq_path': lq_path, 'gt_path': gt_path, 'txt':''}

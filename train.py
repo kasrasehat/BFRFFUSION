@@ -16,7 +16,8 @@ def get_parser(**parser_kwargs):
         "--name",
         type=str,
         const=True,
-        default="FFHQ",
+        # default="FFHQ",
+        default="",
         nargs="?",
         help="postfix for logdir",
     )
@@ -25,7 +26,7 @@ def get_parser(**parser_kwargs):
         "--resume",
         type=str,
         const=True,
-        default="",
+        default="/mnt/drive/experiments/2024-12-15_21:55:56_FFHQ/checkpoints/last.ckpt",
         nargs="?",
         help="resume from logdir or checkpoint in logdir",
     )
@@ -56,7 +57,7 @@ def get_parser(**parser_kwargs):
         "-l",
         "--logdir",
         type=str,
-        default="experiments",
+        default="/mnt/drive/experiments",
         help="directory for logging dat shit",
     )
     return parser
